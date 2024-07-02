@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Beneficiary {
-  String get id => throw _privateConstructorUsedError;
   String get nickName => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
 
@@ -31,7 +30,7 @@ abstract class $BeneficiaryCopyWith<$Res> {
           Beneficiary value, $Res Function(Beneficiary) then) =
       _$BeneficiaryCopyWithImpl<$Res, Beneficiary>;
   @useResult
-  $Res call({String id, String nickName, String phoneNumber});
+  $Res call({String nickName, String phoneNumber});
 }
 
 /// @nodoc
@@ -47,15 +46,10 @@ class _$BeneficiaryCopyWithImpl<$Res, $Val extends Beneficiary>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? nickName = null,
     Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -76,7 +70,7 @@ abstract class _$$BeneficiaryImplCopyWith<$Res>
       __$$BeneficiaryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String nickName, String phoneNumber});
+  $Res call({String nickName, String phoneNumber});
 }
 
 /// @nodoc
@@ -90,15 +84,10 @@ class __$$BeneficiaryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? nickName = null,
     Object? phoneNumber = null,
   }) {
     return _then(_$BeneficiaryImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
@@ -114,11 +103,8 @@ class __$$BeneficiaryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BeneficiaryImpl implements _Beneficiary {
-  const _$BeneficiaryImpl(
-      {required this.id, required this.nickName, required this.phoneNumber});
+  const _$BeneficiaryImpl({required this.nickName, required this.phoneNumber});
 
-  @override
-  final String id;
   @override
   final String nickName;
   @override
@@ -126,7 +112,7 @@ class _$BeneficiaryImpl implements _Beneficiary {
 
   @override
   String toString() {
-    return 'Beneficiary(id: $id, nickName: $nickName, phoneNumber: $phoneNumber)';
+    return 'Beneficiary(nickName: $nickName, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -134,7 +120,6 @@ class _$BeneficiaryImpl implements _Beneficiary {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BeneficiaryImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.nickName, nickName) ||
                 other.nickName == nickName) &&
             (identical(other.phoneNumber, phoneNumber) ||
@@ -142,7 +127,7 @@ class _$BeneficiaryImpl implements _Beneficiary {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, nickName, phoneNumber);
+  int get hashCode => Object.hash(runtimeType, nickName, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +138,9 @@ class _$BeneficiaryImpl implements _Beneficiary {
 
 abstract class _Beneficiary implements Beneficiary {
   const factory _Beneficiary(
-      {required final String id,
-      required final String nickName,
+      {required final String nickName,
       required final String phoneNumber}) = _$BeneficiaryImpl;
 
-  @override
-  String get id;
   @override
   String get nickName;
   @override

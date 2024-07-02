@@ -26,3 +26,13 @@ class NotFoundFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class AlreadyExistsFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
+class LimitExceededFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
