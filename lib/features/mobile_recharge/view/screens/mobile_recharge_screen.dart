@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:top_up_ticket/core/router/router.dart';
 import 'package:top_up_ticket/features/mobile_recharge/view/cubit/mobile_recharge_cubit.dart';
 import 'package:top_up_ticket/features/mobile_recharge/view/cubit/mobile_recharge_state.dart';
 import 'package:top_up_ticket/shared/view/widgets/add_beneficiary_form.dart';
@@ -74,7 +75,9 @@ class _RechargeScreenContent extends StatelessWidget {
                       onRechargeNow: (beneficiary) {
                         context.goNamed(
                           ScreenNames.topup,
-                          extra: beneficiary,
+                          extra: TopUpScreenExtraArgs(
+                            beneficiary: beneficiary,
+                          ),
                         );
                       },
                     ),

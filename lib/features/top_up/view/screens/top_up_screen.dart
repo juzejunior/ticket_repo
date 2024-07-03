@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:top_up_ticket/core/extensions/double_money_formatter.dart';
+import 'package:top_up_ticket/core/router/router.dart';
+import 'package:top_up_ticket/core/router/screen_name.dart';
 import 'package:top_up_ticket/features/top_up/domain/entities/top_up.dart';
 import 'package:top_up_ticket/features/top_up/view/cubit/top_up_cubit.dart';
 import 'package:top_up_ticket/features/top_up/view/cubit/top_up_state.dart';
@@ -29,7 +33,17 @@ class TopUpScreen extends StatelessWidget {
               return FloatingActionButton(
                 backgroundColor:
                     state.isValid ? null : Colors.grey.withOpacity(0.5),
-                onPressed: () {},
+                onPressed: () {
+                  if (state.isValid) {
+                    context.goNamed(
+                      ScreenNames.topupResume,
+                      extra: TopUpScreenExtraArgs(
+                        beneficiary: beneficiary,
+                        topUpValue: state.selectedTopUp ?? 0,
+                      ),
+                    );
+                  }
+                },
                 child: const Icon(Icons.arrow_forward),
               );
             },
@@ -103,7 +117,7 @@ class _TopUpHeader extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Balance available: AED $balance',
+          'Balance available: ${balance.toDouble().formatAsMoney()}',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
