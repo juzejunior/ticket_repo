@@ -36,3 +36,13 @@ class LimitExceededFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class LimitExceededTotalPerMonthFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
+class LimitExceededTotalPerMonthPerBeneficiaryFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
