@@ -10,7 +10,7 @@ It's configured with [BLoC](https://pub.dev/packages/flutter_bloc) for state man
 <br />
 <div>
   &emsp;&emsp;&emsp;
-  <img src="https://github.com/juzejunior/astronomy_pod/assets/17789097/0e8043ca-f465-4cca-b49c-c38dacb47c56" alt="Recharge Screen" width="330">
+  <img src="https://github.com/juzejunior/top_up_ticket/assets/17789097/35301c24-834d-4ed4-9721-ab4dff12608c" alt="Recharge Screen" width="330">
 </div>
 <br />
 
