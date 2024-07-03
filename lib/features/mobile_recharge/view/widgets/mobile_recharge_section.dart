@@ -6,9 +6,13 @@ class MobileRechargeSection extends StatefulWidget {
   const MobileRechargeSection({
     super.key,
     required this.beneficiaries,
+    this.onRechargeNow,
   });
 
   final List<Beneficiary> beneficiaries;
+  final Function(
+    Beneficiary beneficiary,
+  )? onRechargeNow;
 
   @override
   State<MobileRechargeSection> createState() => _MobileRechargeSectionState();
@@ -59,6 +63,7 @@ class _MobileRechargeSectionState extends State<MobileRechargeSection>
             if (_selectedTabbar == 0) {
               return _BeneficiariesList(
                 beneficiaries: widget.beneficiaries,
+                onRechargeNow: widget.onRechargeNow,
               );
             } else {
               return _RechargeHistory();
@@ -73,9 +78,13 @@ class _MobileRechargeSectionState extends State<MobileRechargeSection>
 class _BeneficiariesList extends StatelessWidget {
   const _BeneficiariesList({
     required this.beneficiaries,
+    this.onRechargeNow,
   });
 
   final List<Beneficiary> beneficiaries;
+  final Function(
+    Beneficiary beneficiary,
+  )? onRechargeNow;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +121,9 @@ class _BeneficiariesList extends StatelessWidget {
                 child: BeneficiaryCard(
                   name: beneficiary.nickName,
                   phoneNumber: beneficiary.phoneNumber,
-                  onTap: () {},
+                  onTap: () {
+                    onRechargeNow?.call(beneficiary);
+                  },
                 ),
               ),
             );
