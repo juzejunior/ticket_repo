@@ -72,7 +72,7 @@ class UserRepositoryImpl implements UserRepository {
 
         return const Right(null);
       } else {
-        throw NetworkFailure();
+        return Left(NetworkFailure());
       }
     } catch (e) {
       if (e is NetworkException) {
