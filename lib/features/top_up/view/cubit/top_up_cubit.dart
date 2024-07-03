@@ -23,22 +23,14 @@ class TopUpCubit extends Cubit<TopUpState> {
   Future<void> _loadData() async {
     emit(state.copyWith(isLoading: true));
 
-    final userResult = await userRepository.getUser();
+    final user = userRepository.user;
 
-    userResult.fold(
-      (error) {
-        return emit(state.copyWith(
-          hasError: true,
-          isLoading: false,
-        ));
-      },
-      (user) => emit(state.copyWith(
-        user: user,
-        topUps: topUps,
-        isLoading: false,
-        hasError: false,
-      )),
-    );
+    emit(state.copyWith(
+      user: user,
+      topUps: topUps,
+      isLoading: false,
+      hasError: false,
+    ));
   }
 
   void selectTopUp(int? value) {

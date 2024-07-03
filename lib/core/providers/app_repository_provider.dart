@@ -5,11 +5,15 @@ import 'package:top_up_ticket/core/network/connection_status.dart';
 import 'package:top_up_ticket/core/secure_storage/secure_storage_manager.dart';
 import 'package:top_up_ticket/shared/data/datasources/local/user_local_datasource.dart';
 import 'package:top_up_ticket/shared/data/datasources/local/user_local_datasource_impl.dart';
+import 'package:top_up_ticket/shared/data/datasources/remote/topup_transaction_remote_datasource.dart';
+import 'package:top_up_ticket/shared/data/datasources/remote/topup_transaction_remote_datasource_impl.dart';
 import 'package:top_up_ticket/shared/data/datasources/remote/user_remote_datasource.dart';
 import 'package:top_up_ticket/shared/data/datasources/remote/user_remote_datasource_impl.dart';
 import 'package:top_up_ticket/shared/data/repositories/beneficiary_repository_impl.dart';
+import 'package:top_up_ticket/shared/data/repositories/topup_transaction_repository_impl.dart';
 import 'package:top_up_ticket/shared/data/repositories/user_repository_impl.dart';
 import 'package:top_up_ticket/shared/domain/repositories/beneficiary_repository.dart';
+import 'package:top_up_ticket/shared/domain/repositories/topup_transaction_repository.dart';
 import 'package:top_up_ticket/shared/domain/repositories/user_repository.dart';
 
 class AppRepositoryProvider extends StatelessWidget {
@@ -40,6 +44,9 @@ class AppRepositoryProvider extends StatelessWidget {
             context.read<SecureStorageManager>(),
           ),
         ),
+        RepositoryProvider<TopupTransactionRemoteDatasource>(
+          create: (context) => TopupTransactionRemoteDatasourceImpl(),
+        ),
         RepositoryProvider<UserRepository>(
           create: (context) => UserRepositoryImpl(
             context.read<UserRemoteDatasource>(),
@@ -49,6 +56,12 @@ class AppRepositoryProvider extends StatelessWidget {
         ),
         RepositoryProvider<BeneficiaryRepository>(
           create: (context) => BeneficiaryRepositoryImpl(),
+        ),
+        RepositoryProvider<TopupTransactionRepository>(
+          create: (context) => TopupTransactionRepositoryImpl(
+            dataSource: context.read<TopupTransactionRemoteDatasource>(),
+            connectionStatus: context.read<ConnectionStatus>(),
+          ),
         ),
       ],
       child: child,

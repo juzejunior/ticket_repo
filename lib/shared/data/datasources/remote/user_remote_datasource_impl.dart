@@ -11,4 +11,10 @@ class UserRemoteDatasourceImpl implements UserRemoteDatasource {
     final jsonResult = json.decode(data);
     return UserModel.fromJson(jsonResult);
   }
+
+  @override
+  Future<void> startTopUpTransaction(int value, int fee) async {
+    // call api to start top up transaction
+    await Future.delayed(const Duration(seconds: 1));
+  }
 }

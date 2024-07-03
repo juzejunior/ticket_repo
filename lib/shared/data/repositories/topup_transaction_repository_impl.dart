@@ -1,14 +1,24 @@
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:top_up_ticket/core/error/failures.dart';
+import 'package:top_up_ticket/core/network/connection_status.dart';
+import 'package:top_up_ticket/shared/data/datasources/remote/topup_transaction_remote_datasource.dart';
 import 'package:top_up_ticket/shared/domain/constants/global_constants.dart';
 import 'package:top_up_ticket/shared/domain/entities/beneficiary.dart';
 import 'package:top_up_ticket/shared/domain/entities/topup_transaction.dart';
 import 'package:top_up_ticket/shared/domain/repositories/topup_transaction_repository.dart';
 
 class TopupTransactionRepositoryImpl implements TopupTransactionRepository {
+  final TopupTransactionRemoteDatasource dataSource;
+  final ConnectionStatus connectionStatus;
+
   final BehaviorSubject<List<TopUpTransaction>> _transactionsStreamController =
       BehaviorSubject<List<TopUpTransaction>>();
+
+  TopupTransactionRepositoryImpl({
+    required this.dataSource,
+    required this.connectionStatus,
+  });
 
   @override
   Future<Either<Failure, void>> addTransaction({
@@ -23,25 +33,38 @@ class TopupTransactionRepositoryImpl implements TopupTransactionRepository {
       beneficiary: beneficiary,
     );
 
-    final currentTransactions = _transactionsStreamController.valueOrNull;
+    try {
+      if (await connectionStatus.isConnected) {
+        final currentTransactions = _transactionsStreamController.valueOrNull;
 
-    if (currentTransactions != null) {
-      if (isTransactionMonthLimitExceeded(currentTransactions, topUpValue)) {
-        return Left(LimitExceededTotalPerMonthFailure());
+        if (currentTransactions != null) {
+          if (isTransactionMonthLimitExceeded(
+              currentTransactions, topUpValue)) {
+            return Left(LimitExceededTotalPerMonthFailure());
+          }
+
+          if (isTransactionByBeneficiaryPerMonthLimitExceeded(
+              currentTransactions, isUserVerified, beneficiary, topUpValue)) {
+            return Left(LimitExceededTotalPerMonthPerBeneficiaryFailure());
+          }
+
+          await dataSource.addTopupTransaction(
+            value: topUpValue,
+            phoneNumber: beneficiary.phoneNumber,
+          );
+
+          _transactionsStreamController
+              .add([...currentTransactions, newTransaction]);
+        } else {
+          _transactionsStreamController.add([newTransaction]);
+        }
+        return const Right(null);
+      } else {
+        return Left(NetworkFailure());
       }
-
-      if (isTransactionByBeneficiaryPerMonthLimitExceeded(
-          currentTransactions, isUserVerified, beneficiary, topUpValue)) {
-        return Left(LimitExceededTotalPerMonthPerBeneficiaryFailure());
-      }
-
-      _transactionsStreamController
-          .add([...currentTransactions, newTransaction]);
-    } else {
-      _transactionsStreamController.add([newTransaction]);
+    } catch (e) {
+      return Left(ServerFailure());
     }
-
-    return const Right(null);
   }
 
   bool isTransactionMonthLimitExceeded(
