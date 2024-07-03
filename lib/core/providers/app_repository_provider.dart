@@ -7,7 +7,9 @@ import 'package:top_up_ticket/shared/data/datasources/local/user_local_datasourc
 import 'package:top_up_ticket/shared/data/datasources/local/user_local_datasource_impl.dart';
 import 'package:top_up_ticket/shared/data/datasources/remote/user_remote_datasource.dart';
 import 'package:top_up_ticket/shared/data/datasources/remote/user_remote_datasource_impl.dart';
+import 'package:top_up_ticket/shared/data/repositories/beneficiary_repository_impl.dart';
 import 'package:top_up_ticket/shared/data/repositories/user_repository_impl.dart';
+import 'package:top_up_ticket/shared/domain/repositories/beneficiary_repository.dart';
 import 'package:top_up_ticket/shared/domain/repositories/user_repository.dart';
 
 class AppRepositoryProvider extends StatelessWidget {
@@ -44,6 +46,9 @@ class AppRepositoryProvider extends StatelessWidget {
             context.read<UserLocalDatasource>(),
             context.read<ConnectionStatus>(),
           ),
+        ),
+        RepositoryProvider<BeneficiaryRepository>(
+          create: (context) => BeneficiaryRepositoryImpl(),
         ),
       ],
       child: child,

@@ -32,7 +32,7 @@ class UserRepositoryImpl implements UserRepository {
         await localDataSource.cacheUser(user);
         return Right(user.toEntity);
       } else {
-        throw NetworkException();
+        throw NetworkFailure();
       }
     } catch (e) {
       if (e is NetworkException) {

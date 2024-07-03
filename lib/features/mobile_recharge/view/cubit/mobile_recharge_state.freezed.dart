@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_state.dart';
+part of 'mobile_recharge_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,14 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$MobileRechargeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +32,7 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +41,7 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,15 +76,16 @@ mixin _$HomeState {
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract class $MobileRechargeStateCopyWith<$Res> {
+  factory $MobileRechargeStateCopyWith(
+          MobileRechargeState value, $Res Function(MobileRechargeState) then) =
+      _$MobileRechargeStateCopyWithImpl<$Res, MobileRechargeState>;
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$MobileRechargeStateCopyWithImpl<$Res, $Val extends MobileRechargeState>
+    implements $MobileRechargeStateCopyWith<$Res> {
+  _$MobileRechargeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -100,7 +102,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$MobileRechargeStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -114,7 +116,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'HomeState.initial()';
+    return 'MobileRechargeState.initial()';
   }
 
   @override
@@ -133,7 +135,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) {
     return initial();
   }
@@ -145,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) {
     return initial?.call();
   }
@@ -157,7 +160,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -207,7 +210,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeState {
+abstract class _Initial implements MobileRechargeState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -220,7 +223,7 @@ abstract class _$$LoadingStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    extends _$MobileRechargeStateCopyWithImpl<$Res, _$LoadingStateImpl>
     implements _$$LoadingStateImplCopyWith<$Res> {
   __$$LoadingStateImplCopyWithImpl(
       _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
@@ -234,7 +237,7 @@ class _$LoadingStateImpl implements LoadingState {
 
   @override
   String toString() {
-    return 'HomeState.loading()';
+    return 'MobileRechargeState.loading()';
   }
 
   @override
@@ -253,7 +256,8 @@ class _$LoadingStateImpl implements LoadingState {
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) {
     return loading();
   }
@@ -265,7 +269,7 @@ class _$LoadingStateImpl implements LoadingState {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) {
     return loading?.call();
   }
@@ -277,7 +281,7 @@ class _$LoadingStateImpl implements LoadingState {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -327,7 +331,7 @@ class _$LoadingStateImpl implements LoadingState {
   }
 }
 
-abstract class LoadingState implements HomeState {
+abstract class LoadingState implements MobileRechargeState {
   const factory LoadingState() = _$LoadingStateImpl;
 }
 
@@ -340,7 +344,7 @@ abstract class _$$NetworkErrorStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$NetworkErrorStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$NetworkErrorStateImpl>
+    extends _$MobileRechargeStateCopyWithImpl<$Res, _$NetworkErrorStateImpl>
     implements _$$NetworkErrorStateImplCopyWith<$Res> {
   __$$NetworkErrorStateImplCopyWithImpl(_$NetworkErrorStateImpl _value,
       $Res Function(_$NetworkErrorStateImpl) _then)
@@ -354,7 +358,7 @@ class _$NetworkErrorStateImpl implements NetworkErrorState {
 
   @override
   String toString() {
-    return 'HomeState.networkError()';
+    return 'MobileRechargeState.networkError()';
   }
 
   @override
@@ -373,7 +377,8 @@ class _$NetworkErrorStateImpl implements NetworkErrorState {
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) {
     return networkError();
   }
@@ -385,7 +390,7 @@ class _$NetworkErrorStateImpl implements NetworkErrorState {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) {
     return networkError?.call();
   }
@@ -397,7 +402,7 @@ class _$NetworkErrorStateImpl implements NetworkErrorState {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) {
     if (networkError != null) {
@@ -447,7 +452,7 @@ class _$NetworkErrorStateImpl implements NetworkErrorState {
   }
 }
 
-abstract class NetworkErrorState implements HomeState {
+abstract class NetworkErrorState implements MobileRechargeState {
   const factory NetworkErrorState() = _$NetworkErrorStateImpl;
 }
 
@@ -460,7 +465,7 @@ abstract class _$$GeneralErrorStateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GeneralErrorStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$GeneralErrorStateImpl>
+    extends _$MobileRechargeStateCopyWithImpl<$Res, _$GeneralErrorStateImpl>
     implements _$$GeneralErrorStateImplCopyWith<$Res> {
   __$$GeneralErrorStateImplCopyWithImpl(_$GeneralErrorStateImpl _value,
       $Res Function(_$GeneralErrorStateImpl) _then)
@@ -474,7 +479,7 @@ class _$GeneralErrorStateImpl implements GeneralErrorState {
 
   @override
   String toString() {
-    return 'HomeState.generalError()';
+    return 'MobileRechargeState.generalError()';
   }
 
   @override
@@ -493,7 +498,8 @@ class _$GeneralErrorStateImpl implements GeneralErrorState {
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) {
     return generalError();
   }
@@ -505,7 +511,7 @@ class _$GeneralErrorStateImpl implements GeneralErrorState {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) {
     return generalError?.call();
   }
@@ -517,7 +523,7 @@ class _$GeneralErrorStateImpl implements GeneralErrorState {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) {
     if (generalError != null) {
@@ -567,7 +573,7 @@ class _$GeneralErrorStateImpl implements GeneralErrorState {
   }
 }
 
-abstract class GeneralErrorState implements HomeState {
+abstract class GeneralErrorState implements MobileRechargeState {
   const factory GeneralErrorState() = _$GeneralErrorStateImpl;
 }
 
@@ -577,14 +583,14 @@ abstract class _$$SuccessStateImplCopyWith<$Res> {
           _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
       __$$SuccessStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({User user});
+  $Res call({User user, List<Beneficiary> beneficiaries});
 
   $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
 class __$$SuccessStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$SuccessStateImpl>
+    extends _$MobileRechargeStateCopyWithImpl<$Res, _$SuccessStateImpl>
     implements _$$SuccessStateImplCopyWith<$Res> {
   __$$SuccessStateImplCopyWithImpl(
       _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
@@ -594,12 +600,17 @@ class __$$SuccessStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? beneficiaries = null,
   }) {
     return _then(_$SuccessStateImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      null == beneficiaries
+          ? _value._beneficiaries
+          : beneficiaries // ignore: cast_nullable_to_non_nullable
+              as List<Beneficiary>,
     ));
   }
 
@@ -615,14 +626,22 @@ class __$$SuccessStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessStateImpl implements SuccessState {
-  const _$SuccessStateImpl(this.user);
+  const _$SuccessStateImpl(this.user, final List<Beneficiary> beneficiaries)
+      : _beneficiaries = beneficiaries;
 
   @override
   final User user;
+  final List<Beneficiary> _beneficiaries;
+  @override
+  List<Beneficiary> get beneficiaries {
+    if (_beneficiaries is EqualUnmodifiableListView) return _beneficiaries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_beneficiaries);
+  }
 
   @override
   String toString() {
-    return 'HomeState.success(user: $user)';
+    return 'MobileRechargeState.success(user: $user, beneficiaries: $beneficiaries)';
   }
 
   @override
@@ -630,11 +649,14 @@ class _$SuccessStateImpl implements SuccessState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessStateImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality()
+                .equals(other._beneficiaries, _beneficiaries));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(
+      runtimeType, user, const DeepCollectionEquality().hash(_beneficiaries));
 
   @JsonKey(ignore: true)
   @override
@@ -649,9 +671,10 @@ class _$SuccessStateImpl implements SuccessState {
     required TResult Function() loading,
     required TResult Function() networkError,
     required TResult Function() generalError,
-    required TResult Function(User user) success,
+    required TResult Function(User user, List<Beneficiary> beneficiaries)
+        success,
   }) {
-    return success(user);
+    return success(user, beneficiaries);
   }
 
   @override
@@ -661,9 +684,9 @@ class _$SuccessStateImpl implements SuccessState {
     TResult? Function()? loading,
     TResult? Function()? networkError,
     TResult? Function()? generalError,
-    TResult? Function(User user)? success,
+    TResult? Function(User user, List<Beneficiary> beneficiaries)? success,
   }) {
-    return success?.call(user);
+    return success?.call(user, beneficiaries);
   }
 
   @override
@@ -673,11 +696,11 @@ class _$SuccessStateImpl implements SuccessState {
     TResult Function()? loading,
     TResult Function()? networkError,
     TResult Function()? generalError,
-    TResult Function(User user)? success,
+    TResult Function(User user, List<Beneficiary> beneficiaries)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(user);
+      return success(user, beneficiaries);
     }
     return orElse();
   }
@@ -723,10 +746,13 @@ class _$SuccessStateImpl implements SuccessState {
   }
 }
 
-abstract class SuccessState implements HomeState {
-  const factory SuccessState(final User user) = _$SuccessStateImpl;
+abstract class SuccessState implements MobileRechargeState {
+  const factory SuccessState(
+          final User user, final List<Beneficiary> beneficiaries) =
+      _$SuccessStateImpl;
 
   User get user;
+  List<Beneficiary> get beneficiaries;
   @JsonKey(ignore: true)
   _$$SuccessStateImplCopyWith<_$SuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
