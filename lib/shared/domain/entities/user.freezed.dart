@@ -19,6 +19,7 @@ mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  int get balance => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +30,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String name, bool isVerified});
+  $Res call({String id, String name, bool isVerified, int balance});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? name = null,
     Object? isVerified = null,
+    Object? balance = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,6 +64,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -73,7 +79,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, bool isVerified});
+  $Res call({String id, String name, bool isVerified, int balance});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? isVerified = null,
+    Object? balance = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -103,6 +110,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -111,7 +122,10 @@ class __$$UserImplCopyWithImpl<$Res>
 
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.id, required this.name, required this.isVerified});
+      {required this.id,
+      required this.name,
+      required this.isVerified,
+      required this.balance});
 
   @override
   final String id;
@@ -119,10 +133,12 @@ class _$UserImpl implements _User {
   final String name;
   @override
   final bool isVerified;
+  @override
+  final int balance;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, isVerified: $isVerified)';
+    return 'User(id: $id, name: $name, isVerified: $isVerified, balance: $balance)';
   }
 
   @override
@@ -133,11 +149,12 @@ class _$UserImpl implements _User {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified));
+                other.isVerified == isVerified) &&
+            (identical(other.balance, balance) || other.balance == balance));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, isVerified);
+  int get hashCode => Object.hash(runtimeType, id, name, isVerified, balance);
 
   @JsonKey(ignore: true)
   @override
@@ -150,7 +167,8 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final String name,
-      required final bool isVerified}) = _$UserImpl;
+      required final bool isVerified,
+      required final int balance}) = _$UserImpl;
 
   @override
   String get id;
@@ -158,6 +176,8 @@ abstract class _User implements User {
   String get name;
   @override
   bool get isVerified;
+  @override
+  int get balance;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>

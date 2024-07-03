@@ -8,11 +8,13 @@ class UserModel {
   final String? id;
   final String? name;
   final bool? isVerified;
+  final int? balance;
 
   UserModel({
     required this.id,
     required this.name,
     required this.isVerified,
+    required this.balance,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
@@ -24,5 +26,6 @@ class UserModel {
         id: id ?? '',
         name: name ?? '',
         isVerified: isVerified ?? false,
+        balance: balance ?? 0,
       );
 }
