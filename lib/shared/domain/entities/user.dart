@@ -8,5 +8,6 @@ class User with _$User {
     required String id,
     required String name,
     required bool isVerified,
+    required int balance,
   }) = _User;
 }

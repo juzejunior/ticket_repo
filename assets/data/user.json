@@ -1,5 +1,6 @@
 {
     "id": "qNsWavPdMoKzaNYYtJyh",
     "name": "John Doe",
-    "isVerified": true
+    "isVerified": true,
+    "balance": 5000
 }

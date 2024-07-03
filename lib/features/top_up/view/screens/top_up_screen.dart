@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_up_ticket/features/top_up/domain/entities/top_up.dart';
+import 'package:top_up_ticket/features/top_up/view/cubit/top_up_cubit.dart';
+import 'package:top_up_ticket/features/top_up/view/cubit/top_up_state.dart';
 import 'package:top_up_ticket/shared/domain/entities/beneficiary.dart';
+import 'package:top_up_ticket/shared/view/widgets/top_up_snackbar.dart';
 
 class TopUpScreen extends StatelessWidget {
   const TopUpScreen({
@@ -11,13 +16,135 @@ class TopUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Top up'),
+    return BlocProvider(
+      create: (context) => TopUpCubit(
+        userRepository: context.read(),
       ),
-      body: const Center(
-        child: Text('Top up screen'),
-      ),
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Top up'),
+          ),
+          floatingActionButton: BlocBuilder<TopUpCubit, TopUpState>(
+            builder: (context, state) {
+              return FloatingActionButton(
+                backgroundColor:
+                    state.isValid ? null : Colors.grey.withOpacity(0.5),
+                onPressed: () {},
+                child: const Icon(Icons.arrow_forward),
+              );
+            },
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16.0,
+                horizontal: 24.0,
+              ),
+              child: BlocConsumer<TopUpCubit, TopUpState>(
+                listener: (context, state) {
+                  if (state.hasError ?? false) {
+                    TopUpSnackbar.showFailure(
+                        context, 'Failed to load data. Please try again.');
+                  }
+                },
+                builder: (context, state) {
+                  if (state.isLoading ?? false) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _TopUpHeader(
+                        beneficiary.nickName,
+                        beneficiary.phoneNumber,
+                        state.user?.balance ?? 0,
+                      ),
+                      const SizedBox(height: 20),
+                      _TopUpOptions(
+                        groupValue: state.selectedTopUp ?? 0,
+                        topUps: state.topUps ?? [],
+                        onChanged: (value) {
+                          context.read<TopUpCubit>().selectTopUp(value);
+                        },
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          )),
     );
+  }
+}
+
+class _TopUpHeader extends StatelessWidget {
+  const _TopUpHeader(
+    this.nickName,
+    this.phoneNumber,
+    this.balance,
+  );
+
+  final String nickName;
+  final String phoneNumber;
+  final int balance;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 16),
+        Text(
+          'What is the top-up value?',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Balance available: AED $balance',
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+        ),
+      ],
+    );
+  }
+}
+
+class _TopUpOptions extends StatelessWidget {
+  const _TopUpOptions({
+    required this.topUps,
+    required this.groupValue,
+    required this.onChanged,
+  });
+
+  final int groupValue;
+  final List<TopUp> topUps;
+  final Function(int? value)? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: topUps
+            .map(
+              (topUp) => Column(
+                children: [
+                  RadioListTile(
+                    value: topUp.value,
+                    groupValue: groupValue,
+                    onChanged: onChanged,
+                    title: Text(
+                      topUp.label,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                  const Divider(),
+                ],
+              ),
+            )
+            .toList());
   }
 }
