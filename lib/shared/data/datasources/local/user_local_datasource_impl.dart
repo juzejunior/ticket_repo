@@ -29,10 +29,8 @@ class UserLocalDatasourceImpl implements UserLocalDatasource {
         final mapUser = jsonDecode(user);
         return UserModel.fromJson(mapUser);
       } catch (e) {
-        print(e.toString());
+        return null;
       }
-      // final mapUser = jsonDecode(user);
-      // return UserModel.fromJson(mapUser);
     }
 
     return null;

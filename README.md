@@ -1,16 +1,44 @@
-# top_up_ticket
+# Top-up Ticket 🪐
 
-A new Flutter project.
+A Flutter project that aims to enable user to top-up it's beneficiaries.
 
-## Getting Started
+The app has a recharge acreen listing the user beneficiaries with an option to recharge it's phone.
 
-This project is a starting point for a Flutter application.
+It's configured with [BLoC](https://pub.dev/packages/flutter_bloc) for state management, [Go Router](https://pub.dev/packages/go_router) for routes, [Bloc Provider](https://pub.dev/packages/flutter_bloc) as DI. Using CLEAN arch with feature-based folders.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<br />
+<div>
+  &emsp;&emsp;&emsp;
+  <img src="https://github.com/juzejunior/astronomy_pod/assets/17789097/0e8043ca-f465-4cca-b49c-c38dacb47c56" alt="Recharge Screen" width="330">
+</div>
+<br />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+# Features supported
+
+* Swipe left and right in the control to navigate through all beneficiaries ✅
+* Add a maximum of 5 active top-up beneficiaries ✅
+* Add a recharge to it's beneficiaries ✅
+* Resume Top-Up screen ✅
+
+# First Run 🚀
+
+Installing the package dependencies with 
+
+```
+flutter pub get
+```
+
+This project uses  code generation, execute the following command to generate files:
+
+```
+dart run build_runner build --delete-conflicting-outputs
+```
+
+or watch command in order to keep the source code synced automatically:
+
+```
+flutter packages pub run build_runner watch
+```
