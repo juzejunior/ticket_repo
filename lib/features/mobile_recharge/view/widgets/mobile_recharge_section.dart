@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:top_up_ticket/features/mobile_recharge/view/widgets/beneficiary_card.dart';
 import 'package:top_up_ticket/shared/domain/entities/beneficiary.dart';
 
 class MobileRechargeSection extends StatefulWidget {
@@ -93,18 +94,26 @@ class _BeneficiariesList extends StatelessWidget {
         );
       }
 
+      final screenWidth = MediaQuery.of(context).size.width;
+      final cardWidth = screenWidth * 0.35;
+
       return SizedBox(
-        height: 100,
+        height: cardWidth,
         child: ListView.builder(
           itemCount: beneficiaries.length,
           scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(right: 20.0),
           itemBuilder: (context, index) {
             final beneficiary = beneficiaries[index];
-            return SizedBox(
-              width: 150,
-              child: ListTile(
-                title: Text(beneficiary.nickName),
-                subtitle: Text(beneficiary.phoneNumber),
+            return Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: SizedBox(
+                width: cardWidth,
+                child: BeneficiaryCard(
+                  name: beneficiary.nickName,
+                  phoneNumber: beneficiary.phoneNumber,
+                  onTap: () {},
+                ),
               ),
             );
           },
